@@ -5,7 +5,7 @@ import {
   setFilter,
   showAlert,
   hideAlert,
-} from './actions';
+} from '../Actions/Actions';
 
 const initialState = {
   contacts: [],

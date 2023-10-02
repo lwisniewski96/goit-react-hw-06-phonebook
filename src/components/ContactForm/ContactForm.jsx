@@ -1,9 +1,8 @@
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { FormWrapper, Label, Input, Button } from './ContactForm.styled';
 
 function ContactForm({ onAddContact }) {
-  // const [name, setName] = useState('');
-  // const [number, setNumber] = useState('');
   const [formData, setFormData] = useState({ name: '', number: '' });
 
   const handleChange = event => {
@@ -18,29 +17,29 @@ function ContactForm({ onAddContact }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
+    <FormWrapper onSubmit={handleSubmit}>
+      <Label>
         Name
-        <input
+        <Input
           type="text"
           name="name"
           value={formData.name}
           onChange={handleChange}
           required
         />
-      </label>
-      <label>
+      </Label>
+      <Label>
         Number
-        <input
+        <Input
           type="tel"
           name="number"
           value={formData.number}
           onChange={handleChange}
           required
         />
-      </label>
-      <button type="submit">Add Contact</button>
-    </form>
+      </Label>
+      <Button type="submit">Add Contact</Button>
+    </FormWrapper>
   );
 }
 

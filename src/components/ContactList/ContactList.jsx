@@ -1,22 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {
+  ContactListWrapper,
+  ContactListItem,
+  ContactName,
+  ContactNumber,
+  DeleteButton,
+} from './ContactList.styled'; // Importuj style z ContactList.styled.js
 
 function ContactList({ contacts, onDeleteContact }) {
   return (
-    <ul>
+    <ContactListWrapper>
       {contacts.map(contact => (
-        <li key={contact.id}>
-          {contact.name}: {contact.number}
-          <button
+        <ContactListItem key={contact.id}>
+          <ContactName>{contact.name}:</ContactName> <ContactNumber>{contact.number}</ContactNumber>
+          <DeleteButton
             type="button"
-            className="delete-button"
             onClick={() => onDeleteContact(contact.id)}
           >
             Delete
-          </button>
-        </li>
+          </DeleteButton>
+        </ContactListItem>
       ))}
-    </ul>
+    </ContactListWrapper>
   );
 }
 
@@ -32,3 +38,4 @@ ContactList.propTypes = {
 };
 
 export default ContactList;
+

@@ -1,12 +1,18 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
-import ContactForm from './ContactForm';
-import Filter from './Filter';
-import ContactList from './ContactList';
-import { addContact, deleteContact, setFilter, showAlert, hideAlert } from './actions';
+import ContactForm from '../ContactForm/ContactForm';
+import Filter from '../Filter/Filter';
+import ContactList from '../ContactList/ContactList';
+import {
+  addContact,
+  deleteContact,
+  setFilter,
+  showAlert,
+  hideAlert,
+} from '../Actions/Actions';
 
-import './Phonebook.css';
+
 
 function Phonebook() {
   const dispatch = useDispatch();
@@ -39,22 +45,25 @@ function Phonebook() {
     if (!name.trim() || !number.trim()) {
       return;
     }
-  
+
     const isContactExists = contacts.some(
-      contact => contact && contact.name && contact.name.toLowerCase() === name.toLowerCase()
+      contact =>
+        contact &&
+        contact.name &&
+        contact.name.toLowerCase() === name.toLowerCase()
     );
-  
+
     if (isContactExists) {
       dispatch(showAlert(`Contact "${name}" is already in contacts.`));
       return;
     }
-  
+
     const newContact = {
       id: nanoid(),
       name,
       number,
     };
-  
+
     dispatch(addContact(newContact));
     dispatch(hideAlert());
   };
@@ -70,10 +79,12 @@ function Phonebook() {
 
       <Filter filter={filter} onFilterChange={handleFilterChange} />
       <ContactList
-        contacts={contacts.filter(contact =>
-          contact && contact.name && contact.name.toLowerCase().includes(filter)
+        contacts={contacts.filter(
+          contact =>
+            contact &&
+            contact.name &&
+            contact.name.toLowerCase().includes(filter)
         )}
-        
         onDeleteContact={handleDeleteContact}
       />
 

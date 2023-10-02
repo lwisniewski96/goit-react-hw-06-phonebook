@@ -4,7 +4,7 @@ import {
   filterReducer,
   alertReducer,
   alertTextReducer,
-} from './reducers';
+} from '../Reducers/Reducers';
 
 const store = configureStore({
   reducer: {
