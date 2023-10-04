@@ -10,9 +10,7 @@ import {
   setFilter,
   showAlert,
   hideAlert,
-} from '../Actions/Actions';
-
-
+} from '../../redux/actions';
 
 function Phonebook() {
   const dispatch = useDispatch();
